@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 final public class AllTablesDAO {
+    public static boolean isAlreadySet = false;
     private static final Connection connection = ConnectionManager.open();
     private static Statement statement = null;
     private static final String CREATE_PRIORITY_ENUM = "CREATE TYPE PRIORITY_ENUM AS ENUM ('high', 'medium', 'low');\n";
@@ -28,7 +29,7 @@ final public class AllTablesDAO {
             "    \"id\"                           BIGSERIAL  PRIMARY KEY,  /*было bigint*/\n" +
             "    \"name\"                         TEXT     NOT NULL,\n" +
             "    \"legal_address\"                TEXT     NOT NULL,\n" +
-            "    \"bank_details\"                 INTEGER  NOT NULL,\n" +
+            "    \"bank_details\"                 INTEGER  NOT NULL\n" +
             ");";
     private static final String CREATE_CUSTOMER_CONTACT_PERSON = "CREATE TABLE \"customers_contact_person\" (\n" +
             "    \"id\"                           BIGSERIAL   PRIMARY KEY, /*было bigint*/\n" +
@@ -116,9 +117,9 @@ final public class AllTablesDAO {
         setCreateResultEnum();
         setCreateUsers();
         setCreateCustomer();
+        setCreateCustomerContactPerson();
         setCreatePhone();
         setCreateEmail();
-        setCreateCustomerContactPerson();
         setCreateProject();
         setCreateRequirements();
         setCreateScheduledTests();

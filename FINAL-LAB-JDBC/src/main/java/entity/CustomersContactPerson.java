@@ -6,14 +6,19 @@ public class CustomersContactPerson {
     private String surname;
     private String patronymic;
     private int customer_id;
+    private String phone;
+    private String email;
 
-    public CustomersContactPerson(int id, String name, String surname, String patronymic, int customer_id) {
+    public CustomersContactPerson(int id, String name, String surname, String patronymic, int customer_id, String phone, String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.customer_id = customer_id;
+        this.phone = phone;
+        this.email = email;
     }
+
     public CustomersContactPerson(){
     }
 
@@ -57,6 +62,22 @@ public class CustomersContactPerson {
         this.customer_id = customer_id;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "CustomersContactPerson{" +
@@ -65,6 +86,8 @@ public class CustomersContactPerson {
                 ", surname='" + surname + '\'' +
                 ", patronymic='" + patronymic + '\'' +
                 ", customer_id=" + customer_id +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
