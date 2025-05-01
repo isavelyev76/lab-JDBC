@@ -3,10 +3,7 @@ package dao;
 import entity.CustomersContactPerson;
 import util.ConnectionManager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +39,8 @@ public class CustomerContactPersonDAO {
     }
     public void addNewCustomer(String name, String surname, String patronymic, int customer_id) throws SQLException {
         Connection connection = ConnectionManager.open();
+        Statement statement = connection.createStatement();
+        statement.execute("SELECT setval('customers_contact_person_id_seq', (SELECT MAX(id) FROM customers_contact_person));");
         PreparedStatement preparedStatement = connection.prepareStatement(ADD_NEW_CUSTOMER_CONTACT_PERSON, PreparedStatement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, name);
         preparedStatement.setString(2, surname);

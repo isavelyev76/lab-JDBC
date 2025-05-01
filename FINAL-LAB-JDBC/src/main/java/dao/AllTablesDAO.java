@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 final public class AllTablesDAO {
-    public static boolean isAlreadySet = false;
+    public static boolean isAlreadySet = true;
     private static final Connection connection = ConnectionManager.open();
     private static Statement statement = null;
     private static final String CREATE_PRIORITY_ENUM = "CREATE TYPE PRIORITY_ENUM AS ENUM ('high', 'medium', 'low');\n";

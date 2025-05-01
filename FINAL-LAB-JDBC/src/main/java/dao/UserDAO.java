@@ -3,10 +3,7 @@ package dao;
 import entity.User;
 import util.ConnectionManager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,8 +36,9 @@ public class UserDAO {
 
     public void addNewUser(String login, String password, short role) throws SQLException {
         Connection connection = ConnectionManager.open();
+        Statement statement = connection.createStatement();
+        statement.execute("SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));");
         PreparedStatement preparedStatement = null;
-
         preparedStatement = connection.prepareStatement(ADD_NEW_USER, PreparedStatement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);

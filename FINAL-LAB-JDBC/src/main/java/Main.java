@@ -1,13 +1,27 @@
-import menu.*;
-import menu.customer.*;
-import menu.customer_contact_person.*;
-import menu.phone.*;
-import menu.email.*;
-import menu.user.*;
-import org.postgresql.Driver;
-import util.ConnectionManager;
+import menu.ExitMenuItem;
+import menu.InitTablesMenuItem;
+import menu.MenuItem;
+import menu.customer.CreateCustomerMenuItem;
+import menu.customer.DeleteCustomerMenuItem;
+import menu.customer.UpdateCustomerMenuItem;
+import menu.customer.ViewAllCustomersMenuItem;
+import menu.customer_contact_person.CreateCustomerContactPersonMenuItem;
+import menu.customer_contact_person.DeleteCustomerContactPersonMenuItem;
+import menu.customer_contact_person.UpdateCustomerContactPersonMenuItem;
+import menu.customer_contact_person.ViewCustomerContactPersonsMenuItem;
+import menu.email.CreateEmailMenuItem;
+import menu.email.DeleteEmailMenuItem;
+import menu.email.UpdateEmailMenuItem;
+import menu.email.ViewAllEmailsMenuItem;
+import menu.phone.CreatePhoneMenuItem;
+import menu.phone.DeletePhoneMenuItem;
+import menu.phone.UpdatePhoneMenuItem;
+import menu.phone.ViewAllPhonesMenuItem;
+import menu.user.CreateUserMenuItem;
+import menu.user.DeleteUserMenuItem;
+import menu.user.ReadAllUsersMenuItem;
+import menu.user.UpdateUserMenuItem;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
@@ -16,8 +30,6 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            Class<Driver> driverClass = Driver.class;
-            Connection connection = ConnectionManager.open();
             Scanner console = new Scanner(System.in);
 
             List<MenuItem> menuItems = List.of(
