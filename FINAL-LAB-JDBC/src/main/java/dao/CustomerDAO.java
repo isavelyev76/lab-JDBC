@@ -34,8 +34,6 @@ public class CustomerDAO {
     }
     public void addNewCustomer(String name, String legal_address, int bank_details) throws SQLException {
         Connection connection = ConnectionManager.open();
-        Statement statement = connection.createStatement();
-        statement.execute("SELECT setval('customer_id_seq', (SELECT MAX(id) FROM customer));");
         PreparedStatement preparedStatement = connection.prepareStatement(ADD_NEW_CUSTOMER, PreparedStatement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, name);
         preparedStatement.setString(2, legal_address);

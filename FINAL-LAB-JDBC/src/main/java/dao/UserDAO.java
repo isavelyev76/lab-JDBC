@@ -36,10 +36,7 @@ public class UserDAO {
 
     public void addNewUser(String login, String password, short role) throws SQLException {
         Connection connection = ConnectionManager.open();
-        Statement statement = connection.createStatement();
-        statement.execute("SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));");
-        PreparedStatement preparedStatement = null;
-        preparedStatement = connection.prepareStatement(ADD_NEW_USER, PreparedStatement.RETURN_GENERATED_KEYS);
+        PreparedStatement preparedStatement = connection.prepareStatement(ADD_NEW_USER, PreparedStatement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);
         preparedStatement.setShort(3, role);
